@@ -20,6 +20,6 @@
         </table>
     </div>
     <div class="col-md-6">
-        <app-adduser *ngIf="action === 'add'" [user]="selectedUser"></app-adduser>
+        <app-adduser *ngIf="action === 'add'" [user]="selectedUser" (userAddedEvent)="refreshData()"></app-adduser>
     </div>
 </div>
