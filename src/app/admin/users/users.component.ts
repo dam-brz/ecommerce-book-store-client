@@ -20,8 +20,12 @@ export class UsersComponent implements OnInit {
     private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    this.refreshData();
+  }
+
+  refreshData() {
     this.httpClientService.getAllUsers().subscribe(
-      respose => this.handleSuccessfulResponse(respose)
+      response => this.handleSuccessfulResponse(response),
     );
 
     this.activatedRoute.queryParams.subscribe(
