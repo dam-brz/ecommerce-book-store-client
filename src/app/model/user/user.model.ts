@@ -1,6 +1,6 @@
 export class User {
-    id!: Number;
-    name!: String;
-    type!: String;
-    password!: String;
+    id!: number;
+    name!: string;
+    type!: string;
+    password!: string;
 }
