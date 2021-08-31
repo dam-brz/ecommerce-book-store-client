@@ -17,4 +17,8 @@ export class HttpClientService {
     return this.httpClient.post<User>('http://localhost:8080/users/', newUser);
   }
 
+  deleteUser(id: number) {
+    return this.httpClient.delete<User>('http://localhost:8080/users/' + id);
+  }
+
 }
