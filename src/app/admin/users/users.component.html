@@ -22,6 +22,6 @@
     </div>
     <div class="col-md-6">
         <app-adduser *ngIf="action === 'add'" [user]="selectedUser" (userAddedEvent)="refreshData()"></app-adduser>
-        <app-viewuser *ngIf="action === 'view'" [user]="selectedUser"></app-viewuser>
+        <app-viewuser *ngIf="action === 'view'" [user]="selectedUser" (userDeletedEvent)="refreshData()"></app-viewuser>
     </div>
 </div>
