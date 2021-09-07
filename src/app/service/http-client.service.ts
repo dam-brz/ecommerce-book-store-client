@@ -26,4 +26,8 @@ export class HttpClientService {
     return this.httpClient.get<Book[]>('http://localhost:8080/books/');
   }
 
+  addBook(newBook: Book) {
+    return this.httpClient.post<Book>('http://localhost:8080/books/', newBook);
+  }
+
 }
