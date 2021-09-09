@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Book } from 'src/app/model/book/book';
 import { HttpClientService } from 'src/app/service/http-client.service';
@@ -13,6 +13,9 @@ export class ViewbookComponent implements OnInit {
   @Input()
   book!: Book;
 
+  @Output()
+  bookDeletedEvent = new EventEmitter();
+
   constructor(private httpClientService: HttpClientService, private router: Router) { }
 
   ngOnInit(): void {
@@ -21,6 +24,7 @@ export class ViewbookComponent implements OnInit {
   deleteBook() {
     this.httpClientService.deleteBook(this.book.id).subscribe(
       (book) => {
+        this.bookDeletedEvent.emit();
         this.router.navigate(['admin', 'books']);
       }
     );
