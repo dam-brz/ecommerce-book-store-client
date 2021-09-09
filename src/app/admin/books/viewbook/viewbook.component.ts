@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Book } from 'src/app/model/book/book';
+import { HttpClientService } from 'src/app/service/http-client.service';
 
 @Component({
   selector: 'app-viewbook',
@@ -11,9 +13,17 @@ export class ViewbookComponent implements OnInit {
   @Input()
   book!: Book;
 
-  constructor() { }
+  constructor(private httpClientService: HttpClientService, private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  deleteBook() {
+    this.httpClientService.deleteBook(this.book.id).subscribe(
+      (book) => {
+        this.router.navigate(['admin', 'books']);
+      }
+    );
   }
 
 }
